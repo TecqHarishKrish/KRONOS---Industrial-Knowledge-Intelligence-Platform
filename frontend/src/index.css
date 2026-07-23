@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #0c0c0f;
+  --color-zinc-850: #18181b;
+  --color-zinc-800: #1e1e24;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-50: #fafafa;
+  --font-sans: 'DM Sans', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 font-sans transition-colors duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-850 rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-zinc-400 dark:bg-zinc-700;
+}

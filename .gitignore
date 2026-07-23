@@ -1,0 +1,23 @@
+# Python virtual env and cache
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Databases and local uploads
+backend/data/
+data/
+
+# Frontend dependencies and builds
+frontend/node_modules/
+frontend/dist/
+frontend/.svelte-kit/
+frontend/build/
+
+# IDE settings and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.env
+.env.local

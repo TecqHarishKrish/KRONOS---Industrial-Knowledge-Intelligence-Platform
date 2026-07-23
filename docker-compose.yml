@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - backend-data:/workspace/data
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=super_secret_industrial_key_change_me_in_prod_1234567890
+      - TESSERACT_CMD=/usr/bin/tesseract
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend-data:
