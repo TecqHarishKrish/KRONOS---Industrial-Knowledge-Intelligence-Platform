@@ -1,0 +1,27 @@
+# V2 Tasks
+
+- `[x]` Phase 1: Database Schema Extensions & Digital Twin Service
+  - `[x]` Update backend models with the Equipment SQLAlchemy schema
+  - `[x]` Create Equipment service and twin API endpoints (`/equipment`)
+- `[x]` Phase 2: Knowledge Evolution & SOP Diff Engines
+  - `[x]` Implement line-by-line document comparison diff engine
+  - `[x]` Expose evolution diff APIs (`/evolution/compare`) and Copilot support (`/documents/{id}/copilot`)
+- `[x]` Phase 3: Root Cause Chains & Incident Similarity Engine
+  - `[x]` Implement hierarchical root cause chain tree generator
+  - `[x]` Implement semantic incident similarity matcher and auto-investigation report APIs
+- `[x]` Phase 4: Health Analytics, Gap Detector & Predictive Alerts
+  - `[x]` Create health score service compiling coverage, gaps, freshness, and duplicate counts
+  - `[x]` Create predictive alerts warning service and executive summary insights API
+- `[x]` Phase 5: Graph Playback & Demo Mode
+  - `[x]` Implement time-based lifecycle playback state generator
+  - `[x]` Create Demo Seeder endpoints and guided questions data
+- `[x]` Phase 6: Frontend V2 Pages Construction
+  - `[x]` Build Equipment Twin profile page (specs, records, active log list)
+  - `[x]` Build SOP Evolution diff comparison view screen
+  - `[x]` Build Incident Investigation dashboard with similarity cards and report downloading
+  - `[x]` Build Demo workspace page with playback controls and guided tour
+  - `[x]` Extend Dashboard page with health metrics, alerts list, and report triggers
+- `[x]` Phase 7: Seeding & Verification
+  - `[x]` Create updated seeder script matching the extended database
+  - `[x]` Create test_app_v2.py automated script to assert V2 services
+  - `[x]` Build and test the React frontend for compilation correctness
