@@ -11,7 +11,11 @@ import {
   LogOut, 
   Sun, 
   Moon,
-  Cpu
+  Cpu,
+  Wrench,
+  Shuffle,
+  Shield,
+  Play
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -34,9 +38,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { to: '/', label: 'Dashboard', icon: LayoutDashboard },
     { to: '/upload', label: 'Upload Center', icon: UploadCloud },
     { to: '/documents', label: 'Documents', icon: FileText },
+    { to: '/equipment', label: 'Equipment Twins', icon: Wrench },
+    { to: '/evolution', label: 'SOP Evolution', icon: Shuffle },
+    { to: '/investigate', label: 'Incident Investigation', icon: Shield },
     { to: '/assistant', label: 'Chat Assistant', icon: MessageSquare },
     { to: '/timeline', label: 'Timeline Explorer', icon: Calendar },
     { to: '/graph', label: 'Graph Explorer', icon: GitBranch },
+    { to: '/demo', label: 'Demo Tour', icon: Play },
     { to: '/settings', label: 'Settings', icon: SettingsIcon },
   ];
 

@@ -7,12 +7,13 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from backend.app.core.database import SessionLocal, Base, engine
 from backend.app.core.security import get_password_hash
-from backend.app.models.models import User, Document, ExtractedEntity, ConflictRecord, GraphNode, GraphEdge
+from backend.app.models.models import User, Document, ExtractedEntity, ConflictRecord, GraphNode, GraphEdge, Equipment
 from backend.app.services.ocr import OCRService
 from backend.app.services.extraction import ExtractionService
 from backend.app.services.search import SearchService
 from backend.app.services.temporal import TemporalService
 from backend.app.services.conflict import ConflictService
+from backend.app.services.equipment import EquipmentService
 
 def seed_database():
     print("Resetting database...")
@@ -184,6 +185,10 @@ def seed_database():
 
         print("Detecting database conflicts...")
         ConflictService.detect_all_conflicts(db)
+
+        print("Seeding digital twin equipment profiles...")
+        EquipmentService.get_or_create_twin(db, "PUMP-07")
+        EquipmentService.get_or_create_twin(db, "VALVE-12")
 
         print("Database seeded successfully!")
 

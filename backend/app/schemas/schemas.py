@@ -131,3 +131,34 @@ class GraphEdgeResponse(BaseModel):
 class GraphDataResponse(BaseModel):
     nodes: List[GraphNodeResponse]
     edges: List[GraphEdgeResponse]
+
+
+# Equipment schemas
+class EquipmentResponse(BaseModel):
+    id: int
+    name: str
+    system: Optional[str] = None
+    manufacturer: Optional[str] = None
+    installation_date: Optional[datetime] = None
+    status: str
+    specs_json: Optional[str] = None
+    assigned_engineer: Optional[str] = None
+    risk_level: str
+
+    class Config:
+        from_attributes = True
+
+
+# Lessons Learned schemas
+class LessonsLearnedResponse(BaseModel):
+    id: int
+    incident_doc_id: int
+    equipment_name: str
+    root_cause_summary: str
+    lessons: str
+    prevention_checklist: str
+    recommended_sop_updates: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+

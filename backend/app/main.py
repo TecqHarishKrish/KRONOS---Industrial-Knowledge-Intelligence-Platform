@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.core.config import settings
 from backend.app.core.database import engine, Base
-from backend.app.api import auth, documents, chat, graph, analytics
+from backend.app.api import auth, documents, chat, graph, analytics, equipment, evolution, incidents, demo
 
 # Configure logging
 logging.basicConfig(
@@ -46,6 +46,10 @@ app.include_router(documents.router, prefix=settings.API_V1_STR)
 app.include_router(chat.router, prefix=settings.API_V1_STR)
 app.include_router(graph.router, prefix=settings.API_V1_STR)
 app.include_router(analytics.router, prefix=settings.API_V1_STR)
+app.include_router(equipment.router, prefix=settings.API_V1_STR)
+app.include_router(evolution.router, prefix=settings.API_V1_STR)
+app.include_router(incidents.router, prefix=settings.API_V1_STR)
+app.include_router(demo.router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 def read_root():

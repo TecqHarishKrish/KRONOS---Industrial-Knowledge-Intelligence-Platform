@@ -108,3 +108,30 @@ class ChatMessage(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     conversation = relationship("ChatConversation", back_populates="messages")
+
+
+class Equipment(Base):
+    __tablename__ = "equipment"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True, nullable=False)
+    system = Column(String, nullable=True)
+    manufacturer = Column(String, nullable=True)
+    installation_date = Column(DateTime, nullable=True)
+    status = Column(String, nullable=False, default="Operating")  # Operating, Maintenance, Failed
+    specs_json = Column(Text, nullable=True)  # specifications JSON
+    assigned_engineer = Column(String, nullable=True)
+    risk_level = Column(String, nullable=False, default="Low")  # Low, Medium, High
+
+
+class LessonsLearned(Base):
+    __tablename__ = "lessons_learned"
+
+    id = Column(Integer, primary_key=True, index=True)
+    incident_doc_id = Column(Integer, ForeignKey("documents.id", ondelete="CASCADE"), nullable=False)
+    equipment_name = Column(String, nullable=False, index=True)
+    root_cause_summary = Column(Text, nullable=False)
+    lessons = Column(Text, nullable=False)
+    prevention_checklist = Column(Text, nullable=False)  # JSON string
+    recommended_sop_updates = Column(Text, nullable=True)
+

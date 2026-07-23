@@ -12,6 +12,11 @@ import Assistant from './pages/Assistant';
 import Timeline from './pages/Timeline';
 import Graph from './pages/Graph';
 import Settings from './pages/Settings';
+import Equipment from './pages/Equipment';
+import Evolution from './pages/Evolution';
+import Investigate from './pages/Investigate';
+import Demo from './pages/Demo';
+
 
 // Protected Route wrapper component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -75,6 +80,38 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute>
                   <Graph />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/equipment" 
+              element={
+                <ProtectedRoute>
+                  <Equipment />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/evolution" 
+              element={
+                <ProtectedRoute>
+                  <Evolution />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/investigate" 
+              element={
+                <ProtectedRoute>
+                  <Investigate />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/demo" 
+              element={
+                <ProtectedRoute>
+                  <Demo />
                 </ProtectedRoute>
               } 
             />

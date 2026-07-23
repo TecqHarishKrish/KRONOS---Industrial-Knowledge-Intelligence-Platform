@@ -85,3 +85,39 @@ def get_dashboard_data(
         "conflicts": conflicts,
         "equipment_trends": equip_trends
     }
+
+
+from backend.app.services.health import HealthAnalyticsService
+
+@router.get("/health")
+def get_knowledge_health_report(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Calculates coverage, completeness, duplicates, freshness and returns a global health score."""
+    return HealthAnalyticsService.calculate_health_score(db)
+
+@router.get("/gaps")
+def get_knowledge_gaps_detector(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Detects missing manuals, skipped inspections, incomplete metadata, and orphan graph nodes."""
+    return HealthAnalyticsService.detect_knowledge_gaps(db)
+
+@router.get("/alerts")
+def get_predictive_risk_alerts(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Returns document-based predictive operational risks (e.g. repeated failures, outdated procedures)."""
+    return HealthAnalyticsService.get_predictive_alerts(db)
+
+@router.get("/executive")
+def get_executive_summary_report(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Returns high-level statistics and executive recommendations."""
+    return HealthAnalyticsService.get_executive_dashboard(db)
+

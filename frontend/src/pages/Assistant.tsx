@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { 
   MessageSquare, 
   Plus, 
@@ -56,9 +57,19 @@ const Assistant: React.FC = () => {
   const [newTitle, setNewTitle] = useState('New Operation Query');
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
+  const location = useLocation();
+
   useEffect(() => {
     fetchConversations();
   }, []);
+
+  useEffect(() => {
+    if (location.state && (location.state as any).prefilledQuestion) {
+      setInputValue((location.state as any).prefilledQuestion);
+      // Clear location state from history
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   useEffect(() => {
     if (currentConvId) {
